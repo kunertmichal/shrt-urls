@@ -5,9 +5,6 @@ kill_signal = "SIGINT"
 kill_timeout = 5
 processes = []
 
-[env]
-    REDIS_URL = "redis://default:be6cd7a1cd464d37bab90b3e854e3144@fly-shrturls-redis.upstash.io"
-
 [experimental]
   allowed_public_ports = []
   auto_rollback = true
