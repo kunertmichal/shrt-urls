@@ -12,7 +12,7 @@ export class UrlsController {
   }
 
   @Get(':id')
-  findOneAndRedirect(@Param('id') id: string) {
+  findLongUrl(@Param('id') id: string) {
     return this.urlsService.findOne(id);
   }
 }
