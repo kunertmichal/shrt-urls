@@ -1,13 +1,4 @@
-import {
-  Body,
-  Controller,
-  Get,
-  HttpStatus,
-  Param,
-  Post,
-  Res,
-} from '@nestjs/common';
-import { Response } from 'express';
+import { Body, Controller, Get, Param, Post } from '@nestjs/common';
 import { SaveUrlDto } from './dto/create-short-url-dto/save-url-dto';
 import { UrlsService } from './urls.service';
 
@@ -21,8 +12,7 @@ export class UrlsController {
   }
 
   @Get(':id')
-  async findOneAndRedirect(@Param('id') id: string, @Res() res: Response) {
-    const url = await this.urlsService.findOne(id);
-    return res.redirect(HttpStatus.MOVED_PERMANENTLY, url);
+  findOneAndRedirect(@Param('id') id: string) {
+    return this.urlsService.findOne(id);
   }
 }
