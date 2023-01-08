@@ -34,7 +34,16 @@ export class UrlsStorage
 
   async insert(saveUrlDto: SaveUrlDto) {
     const key = nanoid(URL_KEY_LENGTH);
-    await this.redisClient.setex(this.getKey(key), URL_TTL, saveUrlDto.url);
+    const result = await this.redisClient.setex(
+      this.getKey(key),
+      URL_TTL,
+      saveUrlDto.url,
+    );
+
+    if (result !== 'OK') {
+      return this.insert(saveUrlDto);
+    }
+
     return key;
   }
 
