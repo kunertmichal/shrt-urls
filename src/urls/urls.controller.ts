@@ -13,6 +13,6 @@ export class UrlsController {
 
   @Get(':id')
   findLongUrl(@Param('id') id: string) {
-    return this.urlsService.findOne(id);
+    return this.urlsService.findOneAndRefreshTtl(id);
   }
 }

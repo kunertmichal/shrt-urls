@@ -38,8 +38,8 @@ export class UrlsStorage
     return key;
   }
 
-  async findOne(key: string): Promise<string> {
-    return this.redisClient.get(this.getKey(key));
+  async findOneAndRefreshTtl(key: string): Promise<string> {
+    return this.redisClient.getex(this.getKey(key), 'EX', URL_TTL);
   }
 
   private getKey(url: string) {
