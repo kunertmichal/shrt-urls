@@ -7,9 +7,7 @@ import Redis from 'ioredis';
 import { ConfigService } from '@nestjs/config';
 import { nanoid } from 'nanoid';
 import { SaveUrlDto } from './dto/create-short-url-dto/save-url-dto';
-
-const URL_KEY_LENGTH = 6;
-const URL_TTL = 60 * 60; // 1 hour
+import { URL_KEY_LENGTH, URL_TTL } from '../constants';
 
 @Injectable()
 export class UrlsStorage
