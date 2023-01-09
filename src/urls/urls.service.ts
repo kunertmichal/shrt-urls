@@ -6,12 +6,12 @@ import { SaveUrlDto } from './dto/create-short-url-dto/save-url-dto';
 export class UrlsService {
   constructor(private readonly urlsStorage: UrlsStorage) {}
 
-  async findOneAndRefreshTtl(id: string): Promise<string> {
+  async findOneAndRefreshTtl(id: string): Promise<{ longUrl: string }> {
     const found = await this.urlsStorage.findOneAndRefreshTtl(id);
     if (!found) {
       throw new NotFoundException('Url not found');
     }
-    return found;
+    return { longUrl: found };
   }
 
   async save(saveUrlDto: SaveUrlDto) {
