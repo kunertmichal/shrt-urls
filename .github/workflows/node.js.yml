@@ -29,5 +29,5 @@ jobs:
     - run: pnpm install
     - run: pnpm format
     - run: pnpm lint
-    - run: pnpm run build --if-present
+    - run: pnpm build
     - run: pnpm test
