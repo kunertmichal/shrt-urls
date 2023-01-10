@@ -21,12 +21,11 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
-    - name: Use Node.js ${{ matrix.node-version }}
+    - name: Use Node.js 14.x
       uses: actions/setup-node@v3
       with:
-        node-version: ${{ matrix.node-version }}
-        cache: 'pnpm'
-    - run: pnpm install -g pnpm
+        node-version: 14.x
+    - run: npm install -g pnpm
     - run: pnpm install
     - run: pnpm format
     - run: pnpm lint
