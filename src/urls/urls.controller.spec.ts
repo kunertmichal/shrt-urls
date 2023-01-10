@@ -33,7 +33,7 @@ describe('UrlsController', () => {
     it('should return key of saved url', async () => {
       jest
         .spyOn(urlsService, 'save')
-        .mockImplementation(async () => ({ shortUrlKey: 'abc123' }));
+        .mockReturnValue(Promise.resolve({ shortUrlKey: 'abc123' }));
 
       const result = await urlsController.saveUrl({
         url: 'https://google.com',
@@ -50,7 +50,7 @@ describe('UrlsController', () => {
     it('should return url of given key', async () => {
       jest
         .spyOn(urlsService, 'findOneAndRefreshTtl')
-        .mockImplementation(async () => ({ longUrl: 'https://google.com' }));
+        .mockReturnValue(Promise.resolve({ longUrl: 'https://google.com' }));
 
       const result = await urlsController.findLongUrl('abc123');
       expect(result).toStrictEqual({ longUrl: 'https://google.com' });
