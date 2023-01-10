@@ -50,7 +50,7 @@ describe('UrlsController', () => {
     it('should return url of given key', async () => {
       jest
         .spyOn(urlsService, 'findOneAndRefreshTtl')
-        .mockReturnValue(Promise.resolve({ longUrl: 'https://google.com' }));
+        .mockReturnValue(Promise.resolve({ longUrl: 'https://google.com!!!' }));
 
       const result = await urlsController.findLongUrl('abc123');
       expect(result).toStrictEqual({ longUrl: 'https://google.com' });
